@@ -1,6 +1,6 @@
 # floaterminal.nvim
 
-A simple floating terminal plugin for Neovim.
+A simple floating terminal plugin for Neovim based on this [video](https://youtu.be/5PIiKDES_wc?si=NAfHfKuKz-IjBLEb).
 
 ## Installation
 
