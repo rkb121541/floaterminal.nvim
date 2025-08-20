@@ -1,6 +1,6 @@
 local M = {}
 
-local default_opts = {
+M.config = {
   width = 0.8,
   height = 0.8,
   keymap = "<leader>tt",
@@ -9,8 +9,8 @@ local default_opts = {
 function M.setup(user_opts)
   user_opts = user_opts or {}
   for k, v in pairs(user_opts) do
-    if default_opts[k] ~= nil then -- to make sure the user doesn't put something thats not in default_opts
-      default_opts[k] = v
+    if M.config[k] ~= nil then -- to make sure the user doesn't put something thats not in M.config
+      M.config[k] = v
     else
       vim.notify(
         string.format("[floaterminal.nvim] Invalid option: '%s'", k),
@@ -18,7 +18,7 @@ function M.setup(user_opts)
       )
     end
   end
-  vim.keymap.set({"n", "t"}, default_opts.keymap, function()
+  vim.keymap.set({"n", "t"}, M.config.keymap, function()
     M.toggle_terminal()
   end, {})
 end
@@ -31,8 +31,8 @@ local state = {
 }
 
 local function create_floating_window()
-  local width = math.floor(vim.o.columns * default_opts.width)
-  local height = math.floor(vim.o.lines * default_opts.height)
+  local width = math.floor(vim.o.columns * M.config.width)
+  local height = math.floor(vim.o.lines * M.config.height)
 
   local col = math.floor((vim.o.columns - width) / 2)
   local row = math.floor((vim.o.lines - height) / 2)
