@@ -57,7 +57,8 @@ local function create_floating_window()
   local win = vim.api.nvim_open_win(buf, true, win_config)
 
   vim.api.nvim_win_set_option(win, "winhl", "Normal:Normal")
-  vim.api.nvim_set_hl(0, "FloatBorder", { link = "Normal" })
+  local normal_bg = vim.api.nvim_get_hl(0, { name = "Normal" }).background
+  vim.api.nvim_set_hl(0, "FloatBorder", { bg = normal_bg })
 
   return { buf = buf, win = win }
 end
