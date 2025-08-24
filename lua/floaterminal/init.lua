@@ -56,7 +56,7 @@ local function create_floating_window()
 
   local win = vim.api.nvim_open_win(buf, true, win_config)
 
-  vim.api.nvim_win_set_option(win, "winhl", "Normal:Normal, FloatBorder:Normal")
+  vim.api.nvim_win_set_option(win, "winhl", "Normal:Normal,FloatBorder:Normal")
 
   return { buf = buf, win = win }
 end
